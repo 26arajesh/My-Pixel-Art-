@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Lava Bucket Pixel Art!</title> 
+</head>
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        
+
+
+
+
+var bitmap = [
+    "                               ",
+    "                               ",
+    "                               ",
+    "                               ",
+    "                               ",
+    "          @@@###               ",
+    "        @@++=++=##             ",
+    "       @=(=+__)+)+@            ",
+    "       #@+__+__)(@@            ",
+    "       #^@@_++=@@.@            ",
+    "       #$^^@@@@&=%@            ",
+    "       #$$*+$$$).%@            ",
+    "       #$$*$$$$=^%@            ",
+    "        #$$*$$$$%@             ",
+    "        #$$*$$$=%@             ",
+    "        #$$$$$$$%@             ",
+    "         #$$$$$$@              ",
+    "         #$$$$$$@              ",
+    "          @@@@@@               "
+    ];
+
+var palette = {
+    "#" : color(92, 82, 82),
+    "@" : color(41, 30, 30),
+    "." : color(207, 207, 207),
+    "^" : color(230, 230, 230),
+    "%" : color(161, 161, 161),
+    "*" : color(255, 255, 255),
+    "$" : color(201, 201, 201),
+    "-" : color(255, 204, 150),
+    "_" : color(250, 200, 0),
+    "+" : color(255, 145, 0),
+    "=" : color(255, 0, 0),
+    ")" : color(235, 98, 0),
+    "(" : color(133, 0, 0),
+    "&" : color(251, 255, 0),
+
+};
+
+var pixelSize = 15;
+
+background(0, 0, 0, 0);
+noStroke(); 
+
+for (var i = 0; i < bitmap.length; i++) {
+    
+    for (var j = 0; j < bitmap[i].length; j++) {
+        fill(palette[bitmap[i][j]]);
+        if (palette[bitmap[i][j]] !== color(255, 255, 255, 0)) {
+            rect(j * pixelSize, i * pixelSize, pixelSize, pixelSize);
+        }
+    }
+}
+
+draw= function() {
+var scene = "home";
+if(mouseIsPressed) {
+    scene = "dontLookHere";
+}    
+if(scene === "dontLookHere") {
+    fill(0, 0, 0);
+    textSize(20);
+    background(255, 255, 255);
+    text("You found the easter egg!\nTell me in the T&T that you love\napple pie ;)",81,172);
+}
+
+}; //boring pixel art stuff
+    }};
+
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc);
+
+</script>
+
+</html>
